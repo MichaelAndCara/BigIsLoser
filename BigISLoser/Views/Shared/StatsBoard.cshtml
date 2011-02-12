@@ -1,0 +1,25 @@
+﻿@model IEnumerable<BigISLoser.Models.PercentLostModel>
+
+<table>
+    <tr>
+        <th>
+            User
+        </th>
+        <th>
+            Percent Lost
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @String.Format("{0:F}", item.User)
+        </td>
+        <td align="right">
+            @String.Format("{0:F}%", item.PercentLost)
+        </td>        
+    </tr>
+}
+
+</table>
+

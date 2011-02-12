@@ -1,0 +1,5 @@
+C:\_HOME\WebApps\BigISLoser\BigISLoser\bin\BigISLoser.dll
+C:\_HOME\WebApps\BigISLoser\BigISLoser\bin\BigISLoser.pdb
+C:\_HOME\WebApps\BigISLoser\BigISLoser\obj\Release\ResolveAssemblyReference.cache
+C:\_HOME\WebApps\BigISLoser\BigISLoser\obj\Release\BigISLoser.dll
+C:\_HOME\WebApps\BigISLoser\BigISLoser\obj\Release\BigISLoser.pdb

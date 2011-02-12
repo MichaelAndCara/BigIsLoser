@@ -1,0 +1,111 @@
+﻿@model BigISLoser.ViewModels.HomeIndexViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+</head>
+<body>
+    <div style="width: 100%"><div style="float: left;">
+            
+            <h3>Top Losers</h3>
+                @Html.Partial("StatsBoard", Model.PercentLostList)
+
+        </div>        <div style="float: left; padding-left:80px;  width: 180px; text-align: right;">
+			<h3 style="text-align:left;">
+				Total Entries: @Model.UsersCount
+			</h3>
+			<table>
+				<tr>
+					<th style="text-align: left;">
+						Prize
+					</th>
+					<th style="text-align: right;">
+						Amount
+					</th>
+				</tr>
+				<tr>
+					<td style="text-align: left;">
+						First Prize
+					</td>
+					<td>
+						@Model.FirstPrize
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">
+						Second Prize
+					</td>
+					<td>
+						@Model.SecondPrize
+					</td>
+				</tr>
+				<tr>
+					<td style="text-align: left;">
+						Third Prize
+					</td>
+					<td>
+						@Model.ThirdPrize
+					</td>
+				</tr>
+				<tr>
+					<th>
+						Total
+					</th>
+					<th>
+						@Model.EntriesPot
+					</th>
+				<tr>
+			</table>
+			
+            <!--<div>
+                <h4>
+                    Total Entries: @Model.UsersCount</h4>
+            </div>
+            <div>
+                <h4>
+                    Entries Pot: @Model.EntriesPot</h4>
+            </div>
+            <div>
+                <h4>
+                    First Prize: @Model.FirstPrize</h4>
+            </div>
+            <div>
+                <h4>
+                    Second Prize: @Model.SecondPrize</h4>
+            </div>
+            <div>
+                <h4>
+                    Third Prize: @Model.ThirdPrize</h4>
+            </div>-->
+        </div>
+        <!--<div style="float: left; padding-left: 50px; text-align: right;">
+            <div>
+                <h4>
+                    &nbsp;</h4>
+            </div>
+            <div>
+                <h4>
+                    Potential Entries Pot: @Model.PotentialEntriesPot</h4>
+            </div>
+            <div>
+                <h4>
+                    Potential First Prize: @Model.PotentialFirstPrize</h4>
+            </div>
+            <div>
+                <h4>
+                    Potential Second Prize: @Model.PotentialSecondPrize</h4>
+            </div>
+            <div>
+                <h4>
+                    Potential Third Prize: @Model.PotentialThirdPrize</h4>
+            </div>
+        </div>-->
+        
+        <div style="clear: both;">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BigIsLoserModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="WeightMsg_Comment">
+      <EntityTypeMapping TypeName="BigIsLoserModel.WeightMsg_Comment">
+        <MappingFragment StoreEntitySet="WeightMsg_Comment">
+          <ScalarProperty Name="Comment_ID" ColumnName="Comment_ID" />
+          <ScalarProperty Name="Post_ID" ColumnName="Post_ID" />
+          <ScalarProperty Name="Comment_DateTime" ColumnName="Comment_DateTime" />
+          <ScalarProperty Name="Comment_HTML" ColumnName="Comment_HTML" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WeightMsg_Post">
+      <EntityTypeMapping TypeName="BigIsLoserModel.WeightMsg_Post">
+        <MappingFragment StoreEntitySet="WeightMsg_Post">
+          <ScalarProperty Name="Post_ID" ColumnName="Post_ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Post_Content" ColumnName="Post_Content" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="DateModified" ColumnName="DateModified" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WeightUsers">
+      <EntityTypeMapping TypeName="BigIsLoserModel.WeightUser">
+        <MappingFragment StoreEntitySet="WeightUsers">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+          <ScalarProperty Name="PW" ColumnName="PW" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="SignUpDateTime" ColumnName="SignUpDateTime" />
+          <ScalarProperty Name="StartWeight" ColumnName="StartWeight" />
+          <ScalarProperty Name="GoalWeight" ColumnName="GoalWeight" />
+          <ScalarProperty Name="EndWeight" ColumnName="EndWeight" />
+          <ScalarProperty Name="Admin" ColumnName="Admin" />
+          <ScalarProperty Name="Paid" ColumnName="Paid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WeightCheckIns">
+      <EntityTypeMapping TypeName="BigIsLoserModel.WeightCheckIn">
+        <MappingFragment StoreEntitySet="WeightCheckIns">
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="CheckInDate" ColumnName="CheckInDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="CheckInID" ColumnName="CheckInID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

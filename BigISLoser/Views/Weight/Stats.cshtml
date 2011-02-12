@@ -1,0 +1,49 @@
+﻿@model BigISLoser.Models.StatsModel
+@{
+    ViewBag.Title = "Stats";
+}
+<fieldset style="width: 320px;">
+    <legend>Stats</legend>
+    <div style="padding-top: 5px;">
+        <div class="myAccount-display-label">
+            Days Left</div>
+        <div class="myAccount-display-field">@Model.DaysLeft</div>
+        <div class="myAccount-display-label">
+            Weeks Left</div>
+        <div class="myAccount-display-field">@Model.WeeksLeft</div>
+        @if (Model.StartingWeight != 0 && Model.CurrentWeight != 0 && Model.GoalWeight != 0)
+        {
+            <div class="myAccount-display-label">
+                Starting Weight</div>
+            <div class="myAccount-display-field">@String.Format("{0:F}", Model.StartingWeight)</div>
+            
+            <div class="myAccount-display-label">
+                Current Weight</div>
+            <div class="myAccount-display-field">@String.Format("{0:F}", Model.CurrentWeight)</div>
+            
+            <div class="myAccount-display-label">
+                Goal Weight</div>
+            <div class="myAccount-display-field">@String.Format("{0:F}", Model.GoalWeight)</div>
+            
+            <div class="myAccount-display-label">
+                Weight Left</div>
+            <div class="myAccount-display-field">@String.Format("{0:F}", Model.WeightLeft)</div>
+            
+            <div class="myAccount-display-label">
+                Pounds Lost</div>
+            <div class="myAccount-display-field">@String.Format("{0:F}", Model.PoundsLost)</div>
+
+            <div class="myAccount-display-label">
+                Percent Lost</div>
+            <div class="myAccount-display-field">@String.Format("{0:F}%", Model.PercentLost)</div>
+
+            <div class="myAccount-display-label">
+                Per Week for Goal</div>
+            <div class="myAccount-display-field">@String.Format("{0:F}", Model.PerWeek)</div>    
+        }
+        else
+        {
+            <p>You need to have your Intial Weight, Goal Weight, and at least one Check In Weight entered to view Stats.</p> 
+        }
+    </div>
+</fieldset>

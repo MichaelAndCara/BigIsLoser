@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BigISLoser.Models.CommentModel>
+
+<table width="100%">
+@foreach (var item in Model) {
+    <tr>
+        <td>
+                <div class="postWrapper">
+                    <div class="postDetails">
+                        Comment by: @(item.DisplayName ? item.UserName : item.UserId.ToString())
+                        on @item.CommentDate
+                    </div>
+                    <div class="postContent">
+                        @item.CommentContent
+                    </div>
+                </div>
+            </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+        <td>
+            @item.CommentId
+        </td>
+        <td>
+            @item.PostId
+        </td>
+        <td>
+            @String.Format("{0:g}", item.CommentDate)
+        </td>
+        <td>
+            @item.CommentContent
+        </td>
+        <td>
+            @item.UserId
+        </td>
+        <td>
+            @item.UserName
+        </td>
+        <td>
+            @item.DisplayName
+        </td>*@
+    </tr>
+}
+
+</table>
+

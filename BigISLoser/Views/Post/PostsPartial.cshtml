@@ -1,0 +1,34 @@
+﻿@model IEnumerable<BigISLoser.Models.PostModel>
+<div style="padding-bottom: 5px;">@Html.ActionLink("Leave a Post", "Post")</div>
+<table width="100%">
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <div class="postWrapper">
+                    <div class="postTitle">
+                        @item.Title
+                    </div>
+                    <div class="postDetails">
+                        by: @(item.DisplayName ? item.UserName : item.UserId.ToString())
+                        on @item.DateCreated
+                    </div>
+                    <div class="postContent">
+                        @item.PostContent
+                    </div>
+                    <div style="text-align: right; padding: 5px;">
+                        @Html.ActionLink("Comment", "Comment", new { id = item.PostId })
+                    </div>
+                    <div>
+                        @Html.Partial("CommentsPartial", item.Comments)
+                    </div>
+                </div>
+            </td>
+            @*<td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+        </tr>
+    }
+</table>

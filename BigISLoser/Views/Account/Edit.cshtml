@@ -1,0 +1,91 @@
+﻿@model BigISLoser.Models.AccountModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+@{Html.EnableClientValidation();}
+<h2>Edit</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <div id="myAccount">
+
+        <div class="myAccount-display-label">
+            @Html.LabelFor(model => model.UserId)
+        </div>
+        <div class="myAccount-display-field">
+            @Model.UserId
+            @Html.HiddenFor(model => model.UserId)
+        </div>
+
+        <div class="myAccount-display-label">
+            @Html.LabelFor(model => model.UserName)
+        </div>
+        <div class="myAccount-display-field">
+            @Model.UserName
+            @Html.HiddenFor(model => model.UserName)
+        </div>
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.DisplayName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DisplayName)
+            @Html.ValidationMessageFor(model => model.DisplayName)
+        </div>*@
+
+        <div class="myAccount-editor-label">
+            @Html.LabelFor(model => model.StartWeight)
+        </div>
+        <div class="myAccount-editor-field">
+            @Html.EditorFor(model => model.StartWeight)
+            @Html.ValidationMessageFor(model => model.StartWeight)
+        </div>
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.GoalWeight)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GoalWeight)
+            @Html.ValidationMessageFor(model => model.GoalWeight)
+        </div>*@
+
+        <div class="myAccount-editor-label">
+            @Html.LabelFor(model => model.EndWeight)
+        </div>
+        <div class="myAccount-editor-field">
+            @Html.EditorFor(model => model.EndWeight)
+            @Html.ValidationMessageFor(model => model.EndWeight)
+        </div>
+
+        <div class="myAccount-editor-label">
+            @Html.LabelFor(model => model.Paid)
+        </div>
+        <div class="myAccount-editor-field">
+            @Html.EditorFor(model => model.Paid)
+            @Html.ValidationMessageFor(model => model.Paid)
+        </div>
+
+        @*<div class="myAccount-editor-label">
+            @Html.LabelFor(model => model.Admin)
+        </div>
+        <div class="myAccount-editor-field">
+            @Html.EditorFor(model => model.Admin)
+            @Html.ValidationMessageFor(model => model.Admin)
+        </div>*@
+        @Html.HiddenFor(model => model.Admin)
+        @Html.HiddenFor(model => model.DisplayName)
+        @Html.HiddenFor(model => model.GoalWeight)
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "AdminWeights")
+</div>
+

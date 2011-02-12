@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+    <link href="@Url.Content("~/Content/redmond/jquery-ui-1.8.9.custom.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Posts.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="page">
+        <div id="header">
+            <div id="title">
+                <img src="../../images/logo.JPG" />
+                @*<h1>BIG I/S LOSER</h1>*@
+            </div>
+            <div id="logindisplay">
+                @Html.Partial("_LogOnPartial")
+            </div>
+            <div id="menucontainer">
+                <ul id="menu">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @if (Context.User.Identity.Name != "")
+                    {
+                        <li>@Html.ActionLink("Account", "MyAccount", "Account")</li>
+                        <li>@Html.ActionLink("Weight Check Ins", "WeightCheckIns", "Weight")</li>
+                        <li>@Html.ActionLink("Stats", "Stats", "Weight")</li>
+                        <li>@Html.ActionLink("Posts", "Index", "Post")</li>                        
+                    }
+                </ul>
+            </div>
+        </div>
+        <div id="main">
+            @RenderBody()
+        </div>
+        @*<div id="footer">
+        </div>*@
+    </div>
+</body>
+</html>

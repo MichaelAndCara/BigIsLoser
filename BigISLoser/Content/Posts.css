@@ -1,0 +1,33 @@
+﻿.postGrid
+{
+	border: solid 1px #EEEEEE;
+}
+
+.postLeftCol
+{
+	width: 700px;
+}
+.postTitle
+{
+	font-family: Verdana, Arial;
+	font-size: 14px;
+	font-weight: bold;
+	color: Navy;
+}
+.postDetails
+{
+	font-family: Verdana, Arial;
+	font-size: 10px;
+	color: Gray;
+}
+
+.postWrapper
+{
+	padding: 5px;
+	list-style-position:inside;
+}
+.postContent
+{
+	padding: 5px;
+	background-color: #EEEEEE;
+}

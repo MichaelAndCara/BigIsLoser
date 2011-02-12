@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BigIsLoserModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="BigIsLoserModelStoreContainer">
+    <EntitySet Name="WeightCheckIns" EntityType="BigIsLoserModel.Store.WeightCheckIns" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WeightMsg_Comment" EntityType="BigIsLoserModel.Store.WeightMsg_Comment" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WeightMsg_Post" EntityType="BigIsLoserModel.Store.WeightMsg_Post" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WeightUsers" EntityType="BigIsLoserModel.Store.WeightUsers" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_WeightCheckIns_WeightUsers" Association="BigIsLoserModel.Store.FK_WeightCheckIns_WeightUsers">
+      <End Role="WeightUsers" EntitySet="WeightUsers" />
+      <End Role="WeightCheckIns" EntitySet="WeightCheckIns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WeightMsg_Comment_WeightMsg_Post" Association="BigIsLoserModel.Store.FK_WeightMsg_Comment_WeightMsg_Post">
+      <End Role="WeightMsg_Post" EntitySet="WeightMsg_Post" />
+      <End Role="WeightMsg_Comment" EntitySet="WeightMsg_Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WeightMsg_Comment_WeightUsers" Association="BigIsLoserModel.Store.FK_WeightMsg_Comment_WeightUsers">
+      <End Role="WeightUsers" EntitySet="WeightUsers" />
+      <End Role="WeightMsg_Comment" EntitySet="WeightMsg_Comment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WeightMsg_Post_WeightUsers" Association="BigIsLoserModel.Store.FK_WeightMsg_Post_WeightUsers">
+      <End Role="WeightUsers" EntitySet="WeightUsers" />
+      <End Role="WeightMsg_Post" EntitySet="WeightMsg_Post" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="WeightCheckIns">
+    <Key>
+      <PropertyRef Name="CheckInID" />
+    </Key>
+    <Property Name="CheckInID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="CheckInDate" Type="datetime" Nullable="false" />
+    <Property Name="Weight" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WeightMsg_Comment">
+    <Key>
+      <PropertyRef Name="Comment_ID" />
+    </Key>
+    <Property Name="Comment_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Post_ID" Type="int" Nullable="false" />
+    <Property Name="Comment_DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Comment_HTML" Type="text" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WeightMsg_Post">
+    <Key>
+      <PropertyRef Name="Post_ID" />
+    </Key>
+    <Property Name="Post_ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Post_Content" Type="text" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="DateModified" Type="datetime" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WeightUsers">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="varchar" MaxLength="20" />
+    <Property Name="DisplayName" Type="bit" Nullable="false" />
+    <Property Name="PW" Type="varchar" Nullable="false" MaxLength="255" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="SignUpDateTime" Type="datetime" Nullable="false" />
+    <Property Name="StartWeight" Type="int" />
+    <Property Name="GoalWeight" Type="int" />
+    <Property Name="EndWeight" Type="int" />
+    <Property Name="Admin" Type="bit" Nullable="false" />
+    <Property Name="Paid" Type="decimal" Nullable="false" Precision="5" Scale="2" />
+  </EntityType>
+  <Association Name="FK_WeightCheckIns_WeightUsers">
+    <End Role="WeightUsers" Type="BigIsLoserModel.Store.WeightUsers" Multiplicity="1" />
+    <End Role="WeightCheckIns" Type="BigIsLoserModel.Store.WeightCheckIns" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WeightUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="WeightCheckIns">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WeightMsg_Comment_WeightMsg_Post">
+    <End Role="WeightMsg_Post" Type="BigIsLoserModel.Store.WeightMsg_Post" Multiplicity="1" />
+    <End Role="WeightMsg_Comment" Type="BigIsLoserModel.Store.WeightMsg_Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WeightMsg_Post">
+        <PropertyRef Name="Post_ID" />
+      </Principal>
+      <Dependent Role="WeightMsg_Comment">
+        <PropertyRef Name="Post_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WeightMsg_Comment_WeightUsers">
+    <End Role="WeightUsers" Type="BigIsLoserModel.Store.WeightUsers" Multiplicity="1" />
+    <End Role="WeightMsg_Comment" Type="BigIsLoserModel.Store.WeightMsg_Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WeightUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="WeightMsg_Comment">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WeightMsg_Post_WeightUsers">
+    <End Role="WeightUsers" Type="BigIsLoserModel.Store.WeightUsers" Multiplicity="1" />
+    <End Role="WeightMsg_Post" Type="BigIsLoserModel.Store.WeightMsg_Post" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WeightUsers">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="WeightMsg_Post">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

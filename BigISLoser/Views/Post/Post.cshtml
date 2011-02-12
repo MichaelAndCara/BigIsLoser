@@ -1,0 +1,41 @@
+﻿@model BigISLoser.Models.PostModel
+
+@{
+    ViewBag.Title = "Post";
+}
+@{Html.EnableClientValidation();}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Post</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Title)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Title)
+            @Html.ValidationMessageFor(model => model.Title)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PostContent)
+        </div>
+        <div class="editor-field multi">
+            @Html.TextAreaFor(model => model.PostContent, new { @cols = 80 })
+            @Html.ValidationMessageFor(model => model.PostContent)
+        </div>
+
+        @Html.HiddenFor(model => model.UserId)
+        <p>
+            <input type="submit" value="Post" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Posts", "Index")
+</div>
+

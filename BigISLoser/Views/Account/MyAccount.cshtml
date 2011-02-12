@@ -1,0 +1,87 @@
+﻿@model BigISLoser.Models.AccountModel
+@{
+    ViewBag.Title = "My Account";
+}
+@{Html.EnableClientValidation();}
+<h2>
+    Account</h2>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div id="myAccount">
+        <div>
+            <div class="myAccount-display-label">
+                @Html.LabelFor(m => m.UserId)
+            </div>
+            <div class="myAccount-display-field">
+                @Model.UserId
+                @Html.HiddenFor(m => m.UserId)
+            </div>
+        </div>
+        <div>
+            <div class="myAccount-display-label">
+                @Html.LabelFor(m => m.UserName)
+            </div>
+            <div class="myAccount-display-field">
+                @Model.UserName
+            </div>
+        </div>
+        <div title="Show user name to public.  Otherwise it shows user id">
+            <div class="myAccount-editor-label">
+                @Html.LabelFor(m => m.DisplayName)
+            </div>
+            <div class="myAccount-editor-field">
+                @Html.EditorFor(m => m.DisplayName)
+                @Html.ValidationMessageFor(m => m.DisplayName)
+            </div>
+        </div>
+        <div>
+            <div class="myAccount-display-label">
+                @Html.LabelFor(m => m.StartWeight)
+            </div>
+            <div class="myAccount-display-field">@(Model.StartWeight == null ? "" : Model.StartWeight.ToString())
+            </div>
+        </div>
+        <div style="z-index:999;">
+            <div class="myAccount-editor-label">
+                @Html.LabelFor(m => m.GoalWeight)
+            </div>
+            <div class="myAccount-editor-field">
+                @Html.EditorFor(m => m.GoalWeight)
+                @Html.ValidationMessageFor(m => m.GoalWeight)
+            </div>
+        </div>
+        <div>
+            <div class="myAccount-display-label">
+                @Html.LabelFor(m => m.EndWeight)
+            </div>
+            <div class="myAccount-display-field">@(Model.EndWeight == null ? "" : Model.EndWeight.ToString())
+            </div>
+        </div>
+        <div>
+            <div class="myAccount-display-label">
+                @Html.LabelFor(m => m.Paid)
+            </div>
+            <div class="myAccount-display-field">
+                @(Model.Paid != null && Model.Paid != 0 ? "Yes" : "No")
+            </div>
+        </div>
+        <br />
+        <div>
+            <input type="submit" value="Save" />
+        </div>
+        @Html.HiddenFor(model => model.Admin)
+        @Html.HiddenFor(model => model.StartWeight)
+        @Html.HiddenFor(model => model.EndWeight)
+        @Html.HiddenFor(model => model.Paid)
+    </div>
+    
+}
+<div style="padding-top:20px;">
+        @if (Model.Admin)
+        {
+            @Html.ActionLink("Admin Weights", "AdminWeights")
+        }
+    </div>

@@ -1,0 +1,88 @@
+﻿@model IEnumerable<BigISLoser.Models.AccountModel>
+
+@{
+    ViewBag.Title = "AdminWeights";
+}
+
+<h2>AdminWeights</h2>
+
+<table>
+    <tr>
+        <th></th>
+        <th>
+            UserId
+        </th>
+        <th>
+            UserName
+        </th>
+        <th>
+            DisplayName
+        </th>
+        <th>
+            StartWeight
+        </th>
+        <th>
+            GoalWeight
+        </th>
+        <th>
+            EndWeight
+        </th>
+        <th>
+            Paid
+        </th>
+        <th>
+            Admin
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) @*|
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+        </td>
+        <td>
+            @item.UserId
+        </td>
+        <td>
+            @item.UserName
+        </td>
+        <td>
+            @item.DisplayName
+        </td>
+        <td>
+            @String.Format("{0:F}", item.StartWeight)
+        </td>
+        <td>
+            @String.Format("{0:F}", item.GoalWeight)
+        </td>
+        <td>
+            @String.Format("{0:F}", item.EndWeight)
+        </td>
+        <td @if(item.Paid.Equals(0))
+            {
+                <text>style="background-color:red; color:White;"</text>
+            }>
+            @String.Format("{0:F}", item.Paid)
+        </td>
+        <td>
+            @item.Admin
+        </td>
+    </tr>
+}
+<tfoot>
+<tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>@Model.Sum(e => e.Paid)</td>
+    <td></td>
+</tr>
+</tfoot>
+</table>
+
